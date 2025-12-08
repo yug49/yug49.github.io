@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yug Agarwal - Web3/Blockchain Developer & Tech Enthusiast">
+    <meta name="theme-color" content="#000000">
+    <title>Yug Agarwal - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --bg-tertiary: #efefef;
+            --text-primary: #000000;
+            --text-secondary: #555555;
+            --text-tertiary: #888888;
+            --accent: #0066ff;
+            --accent-hover: #0052cc;
+            --border: #e0e0e0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html.dark-mode {
+            --bg-primary: #0d0d0d;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #262626;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-tertiary: #999999;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --border: #333333;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color var(--transition), color var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all var(--transition);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            background: var(--accent);
+            color: white;
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Enhanced header with photo section and gradient background */
+        header {
+            padding: 4rem 2rem 5rem;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        }
+
+        .hero {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .contact-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all var(--transition);
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        /* Photo section with modern styling */
+        .hero-photo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-frame {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            transition: all var(--transition);
+            border: 2px solid var(--border);
+            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.02) translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+        }
+
+        /* Accent bar for visual interest */
+        .accent-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #7c3aed);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 6rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-tertiary);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .section-grid {
+            display: grid;
+            gap: 2.5rem;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .about-highlight {
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .highlight-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-text {
+            flex-grow: 1;
+        }
+
+        .highlight-text strong {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .highlight-text span {
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), #7c3aed);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition);
+        }
+
+        .skill-category:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .skill-category:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            padding: 0.5rem 0.9rem;
+            background: var(--bg-primary);
+            border: 1.5px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: all var(--transition);
+            font-weight: 500;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: linear-gradient(135deg, rgba(3, 102, 255, 0.05), rgba(124, 58, 237, 0.05));
+        }
+
+        /* Experience */
+        .experience-item {
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            transition: all var(--transition);
+            position: relative;
+        }
+
+        .experience-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .exp-title {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+        }
+
+        .exp-company {
+            color: var(--accent);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .exp-date {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            white-space: nowrap;
+            background: var(--bg-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+        }
+
+        .exp-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 0.75rem;
+            line-height: 1.7;
+        }
+
+        /* Achievements */
+        .achievement-item {
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            transition: all var(--transition);
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .achievement-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .achievement-content {
+            flex-grow: 1;
+        }
+
+        .achievement-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .achievement-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), #7c3aed);
+            transform: translateX(-100%);
+            transition: transform var(--transition);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .project-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .tech-badge {
+            font-size: 0.75rem;
+            padding: 0.4rem 0.8rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--accent);
+            border-radius: 6px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all var(--transition);
+            border: 2px solid var(--accent);
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .project-link:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+            transform: scale(1.05);
+        }
+
+        .project-link-alt {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        .project-link-alt:hover {
+            background: linear-gradient(135deg, rgba(3, 102, 255, 0.1), rgba(124, 58, 237, 0.1));
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            header {
+                padding: 3rem 1.5rem;
+            }
+
+            main {
+                padding: 2.5rem 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .contact-links {
+                gap: 1rem;
+            }
+
+            .theme-toggle {
+                top: 1.5rem;
+                right: 1.5rem;
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .exp-header {
+                flex-direction: column;
+            }
+
+            .exp-date {
+                white-space: normal;
+                align-self: flex-start;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-frame {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 0.95rem;
+            }
+
+            header {
+                padding: 2rem 1rem;
+            }
+
+            main {
+                padding: 1.5rem 1rem;
+            }
+
+            section {
+                margin-bottom: 3rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-photo {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-frame {
+                width: 200px;
+                height: 200px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+
+    <header>
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Yug Agarwal</h1>
+                <p class="subtitle">Web3 Developer • Blockchain Engineer</p>
+                <p class="hero-description">Crafting innovative dApps and smart contracts. ETH Global winner, hackathon enthusiast, and passionate about building the decentralized web.</p>
+                <div class="contact-links">
+                    <a href="mailto:pyth0n0729@gmail.com">Email</a>
+                    <a href="https://github.com/yug49" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://linkedin.com/in/yug-agarwal" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="tel:+917388699721">Phone</a>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <div class="photo-frame">
+                    <img src="image.jpg" alt="Yug" />
+                    <div class="accent-bar"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <h2>About</h2>
+            <p class="section-subtitle">Who I Am</p>
+            <div class="about-content">
+                <p class="about-text">
+                    I'm a passionate blockchain developer and tech enthusiast currently studying Computer Science & Engineering at LNM Institute of Information Technology. With a strong foundation in Web3 technologies and multiple hackathon wins, I've built scalable dApps combining smart contracts, AI, and innovative protocols. I'm particularly interested in DeFi, AI-integrated Web3, and pushing the boundaries of what's possible on-chain.
+                </p>
+                <div class="about-highlight">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🏆</div>
+                        <div class="highlight-text">
+                            <strong>5+ Hackathon Wins</strong>
+                            <span>Including ETH Global & PL Genesis victories</span>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">💻</div>
+                        <div class="highlight-text">
+                            <strong>Full-Stack Developer</strong>
+                            <span>Web3 to Web2 expertise</span>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🚀</div>
+                        <div class="highlight-text">
+                            <strong>$100K Incubator</strong>
+                            <span>Zero to TEN by TEN Blockchain</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Experience</h2>
+            <p class="section-subtitle">Professional Journey</p>
+            <div class="section-grid">
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Intern Astronaut: Dev Ambassador</div>
+                            <div class="exp-company">io.net</div>
+                        </div>
+                        <div class="exp-date">Aug 2025 - Present</div>
+                    </div>
+                    <p class="exp-description">
+                        Organizing and supporting university hackathons to promote GPU utilization. Building diverse dApps on io.net's technology to showcase possibilities and help developers explore its full potential.
+                    </p>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Tech Fest Head - Plinth</div>
+                            <div class="exp-company">LNMIIT</div>
+                        </div>
+                        <div class="exp-date">2024 - 2025</div>
+                    </div>
+                    <p class="exp-description">
+                        Led a team of 150+ members across 10+ domains to secure and manage a budget of INR 30L+. Executed the annual techno-management fest featuring tech talks, workshops, seminars, and LNM Hacks hackathon.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements">
+            <h2>Achievements</h2>
+            <p class="section-subtitle">Recognition & Awards</p>
+            <div class="section-grid">
+                <div class="achievement-item">
+                    <div class="achievement-icon">🏅</div>
+                    <div class="achievement-content">
+                        <div class="achievement-title">ETH Global New Delhi 2025</div>
+                        <div class="achievement-desc">2nd position on "Most Killer App" track by Flow blockchain with project PyPI</div>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-icon">🏅</div>
+                    <div class="achievement-content">
+                        <div class="achievement-title">ETH Global Cannes 2025</div>
+                        <div class="achievement-desc">Won "Most innovative use of 0G ecosystem" track by 0G-Labs with Warriors AI-rena</div>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-icon">🏅</div>
+                    <div class="achievement-content">
+                        <div class="achievement-title">Cooking in the TEE Kitchen</div>
+                        <div class="achievement-desc">1st place with Kinora. Selected as 1 of 10 global participants. Offered $100K Zero to TEN Incubation Program</div>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-icon">🏅</div>
+                    <div class="achievement-content">
+                        <div class="achievement-title">PL Genesis: Modular Worlds</div>
+                        <div class="achievement-desc">2nd place in NEAR Protocol's "Agentic Internet" track with project RANN</div>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-icon">🏅</div>
+                    <div class="achievement-content">
+                        <div class="achievement-title">0G Build Onchain AI dApps</div>
+                        <div class="achievement-desc">Won grant in WaveHack Buildathon by 0G-Labs for building AI-powered dApps</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <p class="section-subtitle">Technical Expertise</p>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Solidity</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Rust</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Java</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Web3 & Blockchain</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Smart Contracts</span>
+                        <span class="skill-tag">Foundry</span>
+                        <span class="skill-tag">Hardhat</span>
+                        <span class="skill-tag">NFTs</span>
+                        <span class="skill-tag">DeFi</span>
+                        <span class="skill-tag">L1/L2</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Frontend & Backend</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">TailwindCSS</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Frameworks</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Viem + Wagmi</span>
+                        <span class="skill-tag">IPFS</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <p class="section-subtitle">Highlights from My Work</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-name">PyPI</div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Solidity</span>
+                        <span class="tech-badge">DeFi</span>
+                        <span class="tech-badge">Dutch Auction</span>
+                    </div>
+                    <p class="project-desc">
+                        Decentralized bridge converting stablecoins to INR via UPI payments using Dutch auction pricing with 20s avg settlement time. ETH Global New Delhi 2025 winner.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/yug49" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">Kinora</div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Solidity</span>
+                        <span class="tech-badge">TEE</span>
+                        <span class="tech-badge">AI</span>
+                    </div>
+                    <p class="project-desc">
+                        Users tokenize themselves by minting AI-backed confidential persona NFTs. Transferable assets that fully personify their minters and enable interactive experiences.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/yug49" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">Warriors AI-rena & RANN</div>
+                    <div class="project-tech">
+                        <span class="tech-badge">AI Agents</span>
+                        <span class="tech-badge">VRF</span>
+                        <span class="tech-badge">NFTs</span>
+                    </div>
+                    <p class="project-desc">
+                        On-chain PvP battle game where players mint warrior NFTs with AI personalities. RANN extends this with training center, marketplace, and on-chain leaderboard.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/yug49" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">CLAMM-DEX-Engine</div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Solidity</span>
+                        <span class="tech-badge">Foundry</span>
+                        <span class="tech-badge">DeFi</span>
+                    </div>
+                    <p class="project-desc">
+                        Concentrated Liquidity AMM similar to Uniswap v3, built from scratch. Enables LPs to generate up to 400% more interest vs traditional AMMs.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/yug49" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">Crypto-Fiat Gateway</div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Solidity</span>
+                        <span class="tech-badge">FHE</span>
+                        <span class="tech-badge">Chainlink</span>
+                    </div>
+                    <p class="project-desc">
+                        Crypto-fiat gateway storing KYC data on-chain using FHE encryption. Balances decentralization with regulatory compliance through selective decryption rights.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/yug49" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">OptionAMM</div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Solidity</span>
+                        <span class="tech-badge">Foundry</span>
+                        <span class="tech-badge">Options</span>
+                    </div>
+                    <p class="project-desc">
+                        Platform for creating and trading customizable call/put options. Users' maximum loss is limited to premium paid while profit potential remains unlimited.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/yug49" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Yug Agarwal. All rights reserved. Built with passion for Web3.</p>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        // Check if system prefers dark mode
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark) {
+            html.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark-mode');
+            const isDark = html.classList.contains('dark-mode');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+        });
+    </script>
+</body>
+</html>
