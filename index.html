@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Yug Agarwal - Web3/Blockchain Developer & Tech Enthusiast">
+    <meta name="description" content="Yug Agarwal - Full-stack Web3 Developer and Open-Source Contributor">
     <meta name="theme-color" content="#000000">
     <title>Yug Agarwal - Portfolio</title>
     <style>
@@ -55,38 +55,89 @@
             overflow-x: hidden;
         }
 
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 0.75rem 2rem;
+            box-shadow: var(--shadow);
+            transition: background-color var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            padding: 0.5rem 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+            background: var(--bg-secondary);
+        }
+
         /* Theme Toggle */
         .theme-toggle {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
             background: var(--bg-secondary);
             border: 1px solid var(--border);
             border-radius: 50%;
-            width: 3rem;
-            height: 3rem;
+            width: 2.5rem;
+            height: 2.5rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1rem;
             transition: all var(--transition);
-            z-index: 1000;
-            box-shadow: var(--shadow);
+            margin-left: 1rem;
         }
 
         .theme-toggle:hover {
-            transform: scale(1.1);
             background: var(--accent);
             color: white;
-            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
         }
 
-        /* Enhanced header with photo section and gradient background */
+        html.dark-mode .theme-toggle {
+            color: #ffffff;
+        }
+
+        /* Header */
         header {
-            padding: 4rem 2rem 5rem;
+            padding: 6rem 2rem 4rem;
             border-bottom: 1px solid var(--border);
             background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            margin-top: 3.5rem;
         }
 
         .hero {
@@ -111,14 +162,14 @@
         }
 
         .subtitle {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--accent);
             font-weight: 500;
             margin-bottom: 1rem;
         }
 
         .hero-description {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-secondary);
             line-height: 1.8;
             margin-bottom: 2rem;
@@ -145,7 +196,7 @@
             border-bottom-color: var(--accent);
         }
 
-        /* Photo section with modern styling */
+        /* Photo section */
         .hero-photo {
             display: flex;
             justify-content: center;
@@ -176,17 +227,6 @@
             display: block;
         }
 
-        .photo-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 6rem;
-            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
-        }
-
-        /* Accent bar for visual interest */
         .accent-bar {
             position: absolute;
             bottom: 0;
@@ -204,7 +244,7 @@
         }
 
         section {
-            margin-bottom: 6rem;
+            margin-bottom: 5rem;
         }
 
         h2 {
@@ -215,7 +255,7 @@
         }
 
         .section-subtitle {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-tertiary);
             margin-bottom: 2rem;
             text-transform: uppercase;
@@ -224,7 +264,7 @@
 
         .section-grid {
             display: grid;
-            gap: 2.5rem;
+            gap: 1.5rem;
         }
 
         /* About */
@@ -236,7 +276,7 @@
         }
 
         .about-text {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: var(--text-secondary);
             line-height: 1.8;
         }
@@ -258,8 +298,10 @@
         }
 
         .highlight-icon {
-            font-size: 1.8rem;
+            font-size: 1.2rem;
             flex-shrink: 0;
+            color: var(--accent);
+            font-weight: 700;
         }
 
         .highlight-text {
@@ -274,14 +316,50 @@
         }
 
         .highlight-text span {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-tertiary);
+        }
+
+        /* Education */
+        .education-item {
+            padding: 1.5rem 2rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .edu-school {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .edu-degree {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        .edu-date {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            background: var(--bg-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
         }
 
         /* Skills */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
@@ -319,7 +397,7 @@
         }
 
         .skill-category h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             margin-bottom: 1.25rem;
             color: var(--text-primary);
@@ -328,16 +406,16 @@
         .skill-items {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
+            gap: 0.6rem;
         }
 
         .skill-tag {
             display: inline-block;
-            padding: 0.5rem 0.9rem;
+            padding: 0.4rem 0.8rem;
             background: var(--bg-primary);
             border: 1.5px solid var(--border);
             border-radius: 6px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
             transition: all var(--transition);
             font-weight: 500;
@@ -346,17 +424,15 @@
         .skill-tag:hover {
             border-color: var(--accent);
             color: var(--accent);
-            background: linear-gradient(135deg, rgba(3, 102, 255, 0.05), rgba(124, 58, 237, 0.05));
         }
 
         /* Experience */
         .experience-item {
-            padding: 2rem;
+            padding: 1.5rem 2rem;
             background: var(--bg-secondary);
             border-radius: 12px;
             border-left: 4px solid var(--accent);
             transition: all var(--transition);
-            position: relative;
         }
 
         .experience-item:hover {
@@ -375,14 +451,19 @@
 
         .exp-title {
             font-weight: 700;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--text-primary);
         }
 
-        .exp-company {
+        .exp-title a {
             color: var(--accent);
-            font-size: 0.95rem;
-            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .exp-type {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
         }
 
         .exp-date {
@@ -394,23 +475,26 @@
             border-radius: 4px;
         }
 
-        .exp-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+        .exp-list {
+            list-style: disc;
+            margin-left: 1.25rem;
             margin-top: 0.75rem;
+        }
+
+        .exp-list li {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
             line-height: 1.7;
+            margin-bottom: 0.4rem;
         }
 
         /* Achievements */
         .achievement-item {
-            padding: 1.5rem;
+            padding: 1.25rem 1.5rem;
             background: var(--bg-secondary);
             border-radius: 12px;
             border-left: 4px solid var(--accent);
             transition: all var(--transition);
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
         }
 
         .achievement-item:hover {
@@ -418,33 +502,89 @@
             box-shadow: var(--shadow-hover);
         }
 
-        .achievement-icon {
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .achievement-content {
-            flex-grow: 1;
+        .achievement-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .achievement-title {
             font-weight: 700;
             font-size: 1rem;
-            margin-bottom: 0.5rem;
             color: var(--text-primary);
         }
 
-        .achievement-desc {
+        .achievement-link {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .achievement-list {
+            list-style: disc;
+            margin-left: 1.25rem;
+        }
+
+        .achievement-list li {
             font-size: 0.9rem;
             color: var(--text-secondary);
             line-height: 1.6;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Open Source */
+        .opensource-item {
+            padding: 1.5rem 2rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            transition: all var(--transition);
+        }
+
+        .opensource-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .opensource-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .opensource-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .opensource-link {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .opensource-list {
+            list-style: disc;
+            margin-left: 1.25rem;
+        }
+
+        .opensource-list li {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 0.4rem;
         }
 
         /* Projects */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .project-card {
@@ -482,9 +622,9 @@
         }
 
         .project-name {
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             color: var(--text-primary);
         }
 
@@ -492,12 +632,12 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
 
         .tech-badge {
             font-size: 0.75rem;
-            padding: 0.4rem 0.8rem;
+            padding: 0.35rem 0.7rem;
             background: var(--bg-primary);
             border: 1px solid var(--accent);
             border-radius: 6px;
@@ -506,23 +646,33 @@
         }
 
         .project-desc {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
             line-height: 1.7;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             flex-grow: 1;
+        }
+
+        .project-desc ul {
+            list-style: disc;
+            margin-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .project-desc li {
+            margin-bottom: 0.3rem;
         }
 
         .project-links {
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
             flex-wrap: wrap;
             margin-top: auto;
         }
 
         .project-link {
             display: inline-block;
-            padding: 0.6rem 1.2rem;
+            padding: 0.5rem 1rem;
             background: var(--accent);
             color: white;
             text-decoration: none;
@@ -531,14 +681,12 @@
             font-weight: 600;
             transition: all var(--transition);
             border: 2px solid var(--accent);
-            flex-grow: 1;
             text-align: center;
         }
 
         .project-link:hover {
             background: var(--accent-hover);
             border-color: var(--accent-hover);
-            transform: scale(1.05);
         }
 
         .project-link-alt {
@@ -547,7 +695,101 @@
         }
 
         .project-link-alt:hover {
-            background: linear-gradient(135deg, rgba(3, 102, 255, 0.1), rgba(124, 58, 237, 0.1));
+            background: rgba(0, 102, 255, 0.1);
+        }
+
+        /* Research */
+        .research-item {
+            padding: 1.5rem 2rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            transition: all var(--transition);
+        }
+
+        .research-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .research-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .research-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-style: italic;
+        }
+
+        .research-link {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-decoration: underline;
+            flex-shrink: 0;
+        }
+
+        .research-list {
+            list-style: disc;
+            margin-left: 1.25rem;
+        }
+
+        .research-list li {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Positions */
+        .position-item {
+            padding: 1.5rem 2rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            transition: all var(--transition);
+        }
+
+        .position-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .position-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .position-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .position-date {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            font-style: italic;
+        }
+
+        .position-list {
+            list-style: disc;
+            margin-left: 1.25rem;
+        }
+
+        .position-list li {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 0.4rem;
         }
 
         /* Footer */
@@ -560,6 +802,16 @@
         }
 
         /* Responsive */
+        @media (max-width: 900px) {
+            .nav-links {
+                gap: 0.25rem;
+            }
+            .nav-link {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.75rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero {
                 grid-template-columns: 1fr;
@@ -570,12 +822,8 @@
                 font-size: 2.5rem;
             }
 
-            .subtitle {
-                font-size: 1.1rem;
-            }
-
             header {
-                padding: 3rem 1.5rem;
+                padding: 5rem 1.5rem 3rem;
             }
 
             main {
@@ -590,25 +838,21 @@
                 gap: 1rem;
             }
 
-            .theme-toggle {
-                top: 1.5rem;
-                right: 1.5rem;
-                width: 2.5rem;
-                height: 2.5rem;
-                font-size: 1.2rem;
+            .nav-container {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .nav-links {
+                justify-content: center;
             }
 
             .about-content {
                 grid-template-columns: 1fr;
             }
 
-            .exp-header {
+            .exp-header, .position-header, .research-header, .achievement-header {
                 flex-direction: column;
-            }
-
-            .exp-date {
-                white-space: normal;
-                align-self: flex-start;
             }
 
             .projects-grid {
@@ -626,12 +870,8 @@
                 font-size: 1.8rem;
             }
 
-            .subtitle {
-                font-size: 0.95rem;
-            }
-
             header {
-                padding: 2rem 1rem;
+                padding: 5rem 1rem 2rem;
             }
 
             main {
@@ -659,37 +899,50 @@
                 display: none;
             }
 
-            .hero {
-                grid-template-columns: 1fr;
-            }
-
-            .photo-frame {
-                width: 200px;
-                height: 200px;
-                margin: 0 auto;
+            .nav-link {
+                padding: 0.35rem 0.5rem;
+                font-size: 0.7rem;
             }
         }
     </style>
 </head>
 <body>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-brand">Yug Agarwal</a>
+            <div class="nav-links">
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#achievements" class="nav-link">Achievements</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#opensource" class="nav-link">Open Source</a>
+                <a href="#research" class="nav-link">Research</a>
+                <a href="#positions" class="nav-link">Positions</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <span id="themeIcon">&#9790;</span>
+                </button>
+            </div>
+        </div>
+    </nav>
 
     <header>
         <div class="hero">
             <div class="hero-content">
                 <h1>Yug Agarwal</h1>
-                <p class="subtitle">Web3 Developer • Blockchain Engineer</p>
-                <p class="hero-description">Crafting innovative dApps and smart contracts. ETH Global winner, hackathon enthusiast, and passionate about building the decentralized web.</p>
+                <p class="subtitle">Full-stack Web3 Developer</p>
+                <p class="hero-description">Full-stack Web3 developer and open-source contributor with a strong focus on on-chain systems, protocol design, decentralized applications and smart contract architectures.</p>
                 <div class="contact-links">
-                    <a href="mailto:pyth0n0729@gmail.com">Email</a>
-                    <a href="https://github.com/yug49" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="https://linkedin.com/in/yug-agarwal" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    <a href="tel:+917388699721">Phone</a>
+                    <a href="mailto:pyth0n0729@gmail.com">pyth0n0729@gmail.com</a>
+                    <a href="https://www.linkedin.com/in/yug-agarwal-8b761b255/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://github.com/yug49" target="_blank" rel="noopener noreferrer">Github</a>
+                    <a href="https://x.com/yugAgarwal29" target="_blank" rel="noopener noreferrer">X</a>
+                    <a href="http://t.me/yugAgarwal29" target="_blank" rel="noopener noreferrer">Telegram</a>
                 </div>
             </div>
             <div class="hero-photo">
                 <div class="photo-frame">
-                    <img src="image.jpg" alt="Yug" />
+                    <img src="image.jpg" alt="Yug Agarwal" />
                     <div class="accent-bar"></div>
                 </div>
             </div>
@@ -697,35 +950,60 @@
     </header>
 
     <main>
-        <!-- About Section -->
-        <section id="about">
-            <h2>About</h2>
-            <p class="section-subtitle">Who I Am</p>
-            <div class="about-content">
-                <p class="about-text">
-                    I'm a passionate blockchain developer and tech enthusiast currently studying Computer Science & Engineering at LNM Institute of Information Technology. With a strong foundation in Web3 technologies and multiple hackathon wins, I've built scalable dApps combining smart contracts, AI, and innovative protocols. I'm particularly interested in DeFi, AI-integrated Web3, and pushing the boundaries of what's possible on-chain.
-                </p>
-                <div class="about-highlight">
-                    <div class="highlight-item">
-                        <div class="highlight-icon">🏆</div>
-                        <div class="highlight-text">
-                            <strong>5+ Hackathon Wins</strong>
-                            <span>Including ETH Global & PL Genesis victories</span>
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education</h2>
+            <p class="section-subtitle">Academic Background</p>
+            <div class="section-grid">
+                <div class="education-item">
+                    <div class="edu-header">
+                        <div>
+                            <div class="edu-school">The LNM Institute of Information Technology, Jaipur, India</div>
+                            <div class="edu-degree">B.Tech. in Computer Science and Engineering</div>
                         </div>
+                        <div class="edu-date">2022 - 2026</div>
                     </div>
-                    <div class="highlight-item">
-                        <div class="highlight-icon">💻</div>
-                        <div class="highlight-text">
-                            <strong>Full-Stack Developer</strong>
-                            <span>Web3 to Web2 expertise</span>
-                        </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <p class="section-subtitle">Technologies and Tools</p>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Solidity</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Rust</span>
                     </div>
-                    <div class="highlight-item">
-                        <div class="highlight-icon">🚀</div>
-                        <div class="highlight-text">
-                            <strong>$100K Incubator</strong>
-                            <span>Zero to TEN by TEN Blockchain</span>
-                        </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Technologies and Frameworks</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Foundry</span>
+                        <span class="skill-tag">IPFS</span>
+                        <span class="skill-tag">Viem + Wagmi</span>
+                        <span class="skill-tag">Remix</span>
+                        <span class="skill-tag">Hardhat</span>
+                        <span class="skill-tag">Blockchain</span>
+                        <span class="skill-tag">Smart Contracts</span>
+                        <span class="skill-tag">NFTs</span>
+                        <span class="skill-tag">L1/L2 Solutions</span>
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">TailwindCSS</span>
                     </div>
                 </div>
             </div>
@@ -733,33 +1011,23 @@
 
         <!-- Experience Section -->
         <section id="experience">
-            <h2>Experience</h2>
+            <h2>Experiences</h2>
             <p class="section-subtitle">Professional Journey</p>
             <div class="section-grid">
                 <div class="experience-item">
                     <div class="exp-header">
                         <div>
-                            <div class="exp-title">Intern Astronaut: Dev Ambassador</div>
-                            <div class="exp-company">io.net</div>
+                            <div class="exp-title"><a href="https://www.io.net" target="_blank" rel="noopener noreferrer">io.net</a> Intern Astronaut: Dev Ambassador</div>
+                            <div class="exp-type">Part-time</div>
                         </div>
                         <div class="exp-date">Aug 2025 - Present</div>
                     </div>
-                    <p class="exp-description">
-                        Organizing and supporting university hackathons to promote GPU utilization. Building diverse dApps on io.net's technology to showcase possibilities and help developers explore its full potential.
-                    </p>
-                </div>
-
-                <div class="experience-item">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-title">Tech Fest Head - Plinth</div>
-                            <div class="exp-company">LNMIIT</div>
-                        </div>
-                        <div class="exp-date">2024 - 2025</div>
-                    </div>
-                    <p class="exp-description">
-                        Led a team of 150+ members across 10+ domains to secure and manage a budget of INR 30L+. Executed the annual techno-management fest featuring tech talks, workshops, seminars, and LNM Hacks hackathon.
-                    </p>
+                    <ul class="exp-list">
+                        <li>Organize and support hackathons to promote GPU utilization.</li>
+                        <li>Build diverse dApps on io.net's technology, mainly "IO Intelligence" to showcase its possibilities.</li>
+                        <li>Help developers and users across communities explore its full potential.</li>
+                        <li>Make videos, threads and technical tutorials to help developers seamlessly integrate io.net in projects.</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -767,91 +1035,53 @@
         <!-- Achievements Section -->
         <section id="achievements">
             <h2>Achievements</h2>
-            <p class="section-subtitle">Recognition & Awards</p>
+            <p class="section-subtitle">Recognition and Awards</p>
             <div class="section-grid">
                 <div class="achievement-item">
-                    <div class="achievement-icon">🏅</div>
-                    <div class="achievement-content">
-                        <div class="achievement-title">ETH Global New Delhi 2025</div>
-                        <div class="achievement-desc">2nd position on "Most Killer App" track by Flow blockchain with project PyPI</div>
+                    <div class="achievement-header">
+                        <div class="achievement-title">ETHGlobal New Delhi 2025 Winner</div>
+                        <a href="https://ethglobal.com/showcase/pypi-6wip3" class="achievement-link" target="_blank" rel="noopener noreferrer">Link</a>
                     </div>
+                    <ul class="achievement-list">
+                        <li>Secured 2nd position in the "Most Killer App" track by Flow blockchain through the project, "PyPI".</li>
+                    </ul>
                 </div>
                 <div class="achievement-item">
-                    <div class="achievement-icon">🏅</div>
-                    <div class="achievement-content">
-                        <div class="achievement-title">ETH Global Cannes 2025</div>
-                        <div class="achievement-desc">Won "Most innovative use of 0G ecosystem" track by 0G-Labs with Warriors AI-rena</div>
+                    <div class="achievement-header">
+                        <div class="achievement-title">ETHGlobal Cannes 2025 Winner</div>
+                        <a href="https://x.com/yugAgarwal29/status/1942709307012755578" class="achievement-link" target="_blank" rel="noopener noreferrer">Link</a>
                     </div>
+                    <ul class="achievement-list">
+                        <li>Won the "Most innovative use of 0G ecosystem" track by 0G-Labs through the project, "Warriors AI-rena".</li>
+                    </ul>
                 </div>
                 <div class="achievement-item">
-                    <div class="achievement-icon">🏅</div>
-                    <div class="achievement-content">
-                        <div class="achievement-title">Cooking in the TEE Kitchen</div>
-                        <div class="achievement-desc">1st place with Kinora. Selected as 1 of 10 global participants. Offered $100K Zero to TEN Incubation Program</div>
+                    <div class="achievement-header">
+                        <div class="achievement-title">Cooking in the TEE Kitchen Winner</div>
+                        <a href="https://x.com/tenprotocol/status/1978818681078722809" class="achievement-link" target="_blank" rel="noopener noreferrer">Link</a>
                     </div>
+                    <ul class="achievement-list">
+                        <li>Ten participants were selected globally among thousands of applicants to code dApps on live streams. Hacked solo and secured 1st place in this hackathon by TEN Blockchain through the project "Kinora".</li>
+                        <li>As part of the reward, I was offered a position in Zero to TEN Incubation Program by TEN blockchain.</li>
+                    </ul>
                 </div>
                 <div class="achievement-item">
-                    <div class="achievement-icon">🏅</div>
-                    <div class="achievement-content">
-                        <div class="achievement-title">PL Genesis: Modular Worlds</div>
-                        <div class="achievement-desc">2nd place in NEAR Protocol's "Agentic Internet" track with project RANN</div>
+                    <div class="achievement-header">
+                        <div class="achievement-title">PL Genesis: Modular Worlds Hackathon Winner</div>
+                        <a href="https://x.com/PL__Genesis/status/1946309537964982680" class="achievement-link" target="_blank" rel="noopener noreferrer">Link</a>
                     </div>
+                    <ul class="achievement-list">
+                        <li>Secured 2nd place in NEAR Protocol's "The Agentic Internet and Building AI-led Web3 Experiences" track with project, "RANN", in PL Genesis, the Global Hackathon hosted by Protocol Labs.</li>
+                    </ul>
                 </div>
                 <div class="achievement-item">
-                    <div class="achievement-icon">🏅</div>
-                    <div class="achievement-content">
-                        <div class="achievement-title">0G Build Onchain AI dApps</div>
-                        <div class="achievement-desc">Won grant in WaveHack Buildathon by 0G-Labs for building AI-powered dApps</div>
+                    <div class="achievement-header">
+                        <div class="achievement-title">Build onchain AI dapps with 0G's Modular L1 - Buildathon Winner</div>
+                        <a href="https://app.akindo.io/communities/MzRnA32AwtBkKJ8G/products/Vw6026kRvtmQdmEv" class="achievement-link" target="_blank" rel="noopener noreferrer">Link</a>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2>Skills</h2>
-            <p class="section-subtitle">Technical Expertise</p>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Languages</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Solidity</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">Rust</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">Java</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Web3 & Blockchain</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Smart Contracts</span>
-                        <span class="skill-tag">Foundry</span>
-                        <span class="skill-tag">Hardhat</span>
-                        <span class="skill-tag">NFTs</span>
-                        <span class="skill-tag">DeFi</span>
-                        <span class="skill-tag">L1/L2</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Frontend & Backend</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">React.js</span>
-                        <span class="skill-tag">Next.js</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Express.js</span>
-                        <span class="skill-tag">TailwindCSS</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools & Frameworks</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Viem + Wagmi</span>
-                        <span class="skill-tag">IPFS</span>
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">Git</span>
-                    </div>
+                    <ul class="achievement-list">
+                        <li>Won grant in a Wave of the 'Build Onchain AI Dapps with 0G's Modular L1' Buildathon (WaveHack by 0G).</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -864,15 +1094,19 @@
                 <div class="project-card">
                     <div class="project-name">PyPI</div>
                     <div class="project-tech">
-                        <span class="tech-badge">Solidity</span>
-                        <span class="tech-badge">DeFi</span>
+                        <span class="tech-badge">Stablecoins</span>
                         <span class="tech-badge">Dutch Auction</span>
+                        <span class="tech-badge">On/Off-Ramp</span>
                     </div>
-                    <p class="project-desc">
-                        Decentralized bridge converting stablecoins to INR via UPI payments using Dutch auction pricing with 20s avg settlement time. ETH Global New Delhi 2025 winner.
-                    </p>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Decentralized off-ramp platform that converts stablecoins to INR via UPI payments (UPI is India's instant, universal money-movement layer that lets anyone pay anyone, anywhere, in seconds, for free) under an average time of 20 seconds.</li>
+                            <li>This off-ramp is inspired by One-Inch's "Fusion Plus Protocol", including third-party resolver bots and Dutch auction pricing mechanism which enables users to often get exchange price better than the market price.</li>
+                        </ul>
+                    </div>
                     <div class="project-links">
-                        <a href="https://github.com/yug49" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://github.com/yug49/PyPI" class="project-link" target="_blank" rel="noopener noreferrer">Github</a>
+                        <a href="https://ethglobal.com/showcase/pypi-6wip3" class="project-link project-link-alt" target="_blank" rel="noopener noreferrer">Demo</a>
                     </div>
                 </div>
 
@@ -882,27 +1116,40 @@
                         <span class="tech-badge">Solidity</span>
                         <span class="tech-badge">TEE</span>
                         <span class="tech-badge">AI</span>
+                        <span class="tech-badge">IPFS</span>
                     </div>
-                    <p class="project-desc">
-                        Users tokenize themselves by minting AI-backed confidential persona NFTs. Transferable assets that fully personify their minters and enable interactive experiences.
-                    </p>
+                    <div class="project-desc">
+                        <ul>
+                            <li>This platform allows users to tokenize themselves by minting and maintaining their own AI-backed persona NFTs.</li>
+                            <li>These transferable assets fully personify their original minters and enable their holders to interact with them.</li>
+                            <li>The users' memory bank was stored on IPFS using asymmetric-key encryption.</li>
+                            <li>All the AI computations were executed inside Phala's TEEs, ensuring that no personal data of any user was exposed.</li>
+                            <li>This project also implemented "Vickrey's second-price auction" fully on-chain, a mechanism named after Nobel laureate William Vickrey, who won the 1996 Nobel Prize in Economic Sciences.</li>
+                        </ul>
+                    </div>
                     <div class="project-links">
-                        <a href="https://github.com/yug49" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://github.com/yug49/kinora-contracts" class="project-link" target="_blank" rel="noopener noreferrer">Github</a>
+                        <a href="https://x.com/Kinora_TEN/status/1976272890560709068" class="project-link project-link-alt" target="_blank" rel="noopener noreferrer">Demo Videos</a>
+                        <a href="https://ten-spark-mind.lovable.app/" class="project-link project-link-alt" target="_blank" rel="noopener noreferrer">Website</a>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-name">Warriors AI-rena & RANN</div>
+                    <div class="project-name">Warriors AI-rena / RANN</div>
                     <div class="project-tech">
                         <span class="tech-badge">AI Agents</span>
                         <span class="tech-badge">VRF</span>
-                        <span class="tech-badge">NFTs</span>
                     </div>
-                    <p class="project-desc">
-                        On-chain PvP battle game where players mint warrior NFTs with AI personalities. RANN extends this with training center, marketplace, and on-chain leaderboard.
-                    </p>
+                    <div class="project-desc">
+                        <ul>
+                            <li>A fully on-chain PvP battle game inspired by Pokemon, where players mint warrior NFTs of any character, using personality traits as metadata so that AI agents can personify these warriors in battles, with players betting on outcomes for profit.</li>
+                            <li><strong>RANN:</strong> An extension of Warriors AI-rena featuring a <em>Training Center:</em> An AI-backed on-chain platform that enables users to train and upgrade their existing warriors, an <em>NFT Marketplace:</em> where users can buy/sell NFTs through on-chain auctions, and an on-chain <em>Leaderboard</em>.</li>
+                        </ul>
+                    </div>
                     <div class="project-links">
-                        <a href="https://github.com/yug49" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://github.com/yug49/RANN" class="project-link" target="_blank" rel="noopener noreferrer">Github</a>
+                        <a href="https://www.youtube.com/playlist?list=PLdvhbTEah58A3PqoY1lrmWMxWr2Mi6od1" class="project-link project-link-alt" target="_blank" rel="noopener noreferrer">Demo Video</a>
+                        <a href="https://rann-blue.vercel.app/" class="project-link project-link-alt" target="_blank" rel="noopener noreferrer">Website</a>
                     </div>
                 </div>
 
@@ -911,28 +1158,15 @@
                     <div class="project-tech">
                         <span class="tech-badge">Solidity</span>
                         <span class="tech-badge">Foundry</span>
-                        <span class="tech-badge">DeFi</span>
                     </div>
-                    <p class="project-desc">
-                        Concentrated Liquidity AMM similar to Uniswap v3, built from scratch. Enables LPs to generate up to 400% more interest vs traditional AMMs.
-                    </p>
+                    <div class="project-desc">
+                        <ul>
+                            <li>It is a CLAMM (Concentrated Liquidity Automated Market Maker) decentralized engine similar to Uniswap v3, built from scratch.</li>
+                            <li>This CLAMM-DEX can generate its liquidity providers up to 400% higher returns on the same capital when compared to traditional AMM-DEX.</li>
+                        </ul>
+                    </div>
                     <div class="project-links">
-                        <a href="https://github.com/yug49" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-name">Crypto-Fiat Gateway</div>
-                    <div class="project-tech">
-                        <span class="tech-badge">Solidity</span>
-                        <span class="tech-badge">FHE</span>
-                        <span class="tech-badge">Chainlink</span>
-                    </div>
-                    <p class="project-desc">
-                        Crypto-fiat gateway storing KYC data on-chain using FHE encryption. Balances decentralization with regulatory compliance through selective decryption rights.
-                    </p>
-                    <div class="project-links">
-                        <a href="https://github.com/yug49" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://github.com/yug49/CLAMM-DEX-Engine" class="project-link" target="_blank" rel="noopener noreferrer">Github</a>
                     </div>
                 </div>
 
@@ -941,39 +1175,172 @@
                     <div class="project-tech">
                         <span class="tech-badge">Solidity</span>
                         <span class="tech-badge">Foundry</span>
-                        <span class="tech-badge">Options</span>
+                        <span class="tech-badge">Chainlink Oracle</span>
                     </div>
-                    <p class="project-desc">
-                        Platform for creating and trading customizable call/put options. Users' maximum loss is limited to premium paid while profit potential remains unlimited.
-                    </p>
+                    <div class="project-desc">
+                        <ul>
+                            <li>It allows users to create and trade both call and put options with customizable parameters such as strike price, lot size, premium, and expiry.</li>
+                            <li>The maximum loss a user may incur is limited to the premium paid, while potential profit is unlimited.</li>
+                        </ul>
+                    </div>
                     <div class="project-links">
-                        <a href="https://github.com/yug49" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://github.com/yug49/OptionAMM" class="project-link" target="_blank" rel="noopener noreferrer">Github</a>
+                        <a href="https://www.loom.com/share/7985afe528d64cadb0fd659b7d33dbb4?sid=334aac62-d3ea-4dcb-8c44-a6e081697c63" class="project-link project-link-alt" target="_blank" rel="noopener noreferrer">Demo Video</a>
+                        <a href="https://option-amm.vercel.app/" class="project-link project-link-alt" target="_blank" rel="noopener noreferrer">Website</a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Open Source Contributions Section -->
+        <section id="opensource">
+            <h2>Open Source Contributions</h2>
+            <p class="section-subtitle">Community Contributions</p>
+            <div class="section-grid">
+                <div class="opensource-item">
+                    <div class="opensource-header">
+                        <div class="opensource-title">Phala Network</div>
+                        <a href="https://github.com/yug49?org=Phala-Network&year_list=1" class="opensource-link" target="_blank" rel="noopener noreferrer">Link</a>
+                    </div>
+                    <ul class="opensource-list">
+                        <li>Refactored `dcap-qvl` crate to allow PKS and KL flags in TDX quote verification.</li>
+                        <li>Fixed incorrect base URL, cleaned up unused/duplicate image files and renamed them to descriptive names in the Phala-docs (One of the PRs is still under review).</li>
+                    </ul>
+                </div>
+                <div class="opensource-item">
+                    <div class="opensource-header">
+                        <div class="opensource-title">OpenZeppelin</div>
+                        <a href="https://github.com/yug49?org=OpenZeppelin&year_list=1" class="opensource-link" target="_blank" rel="noopener noreferrer">Link</a>
+                    </div>
+                    <ul class="opensource-list">
+                        <li>Contributed 7+ PRs accross multiple repositories of OpenZeppelin. Some of them are still under review.</li>
+                        <li>Created benchmarks for the `Event-Scanner` repository from scratch using Criterion.rs and Bencher. Also investigated and fixed potential flaky tests, handled explicit channel closure and optimized reorg handling</li>
+                        <li>Added a feature to auto-generate a private state ID from contract and wallet address in the OpenZeppelin's `UI-Builder`, enhancing end-user experience.</li>
+                    </ul>
+                </div>
+                <div class="opensource-item">
+                    <div class="opensource-header">
+                        <div class="opensource-title">Ethereum Foundation</div>
+                        <a href="https://github.com/yug49?org=ethereum&year_list=1" class="opensource-link" target="_blank" rel="noopener noreferrer">Link</a>
+                    </div>
+                    <ul class="opensource-list">
+                        <li>Added a Python script that validates all JSON and SSZ example pairs in the repository match byte-for-byte. This is still under review.</li>
+                    </ul>
+                </div>
+                <div class="opensource-item">
+                    <div class="opensource-header">
+                        <div class="opensource-title">Keystone Hardware Wallet</div>
+                        <a href="https://github.com/yug49?org=KeystoneHQ&year_list=1" class="opensource-link" target="_blank" rel="noopener noreferrer">Link</a>
+                    </div>
+                    <ul class="opensource-list">
+                        <li>Added a feature to show battery percentage on the status bar and an option to enable/disable this in the settings. This is still under review.</li>
+                    </ul>
+                </div>
+                <div class="opensource-item">
+                    <div class="opensource-header">
+                        <div class="opensource-title">Zama</div>
+                        <a href="https://github.com/yug49?org=zama-ai&year_list=1" class="opensource-link" target="_blank" rel="noopener noreferrer">Link</a>
+                    </div>
+                    <ul class="opensource-list">
+                        <li>Added unit tests for `abiEncodeClearValues` covering `ebool` and `eaddress` types. This is still under review.</li>
+                    </ul>
+                </div>
+                <div class="opensource-item">
+                    <div class="opensource-header">
+                        <div class="opensource-title">OpenCode</div>
+                        <a href="https://github.com/yug49?org=zama-ai&year_list=1" class="opensource-link" target="_blank" rel="noopener noreferrer">Link</a>
+                    </div>
+                    <ul class="opensource-list">
+                        <li>Integrated IO Intelligence in OpenCode, adding it as one of the AI agents providers in `Models.dev`, a comprehensive open-source database of AI model specifications, pricing, and capabilities. Also updated OpenCode's documentation to explain its usage.</li>
+                        <li>This contribution was made as part of my role as Developer Ambassador in io.net.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Articles Section -->
+        <section id="research">
+            <h2>Research Articles</h2>
+            <p class="section-subtitle">Technical Writing</p>
+            <div class="section-grid">
+                <div class="research-item">
+                    <div class="research-header">
+                        <div class="research-title">Phala Network: Building the Confidential Smart Web of the Future</div>
+                        <a href="https://open.substack.com/pub/yugagarwal/p/phala-network?utm_campaign=post&utm_medium=web" class="research-link" target="_blank" rel="noopener noreferrer">Link</a>
+                    </div>
+                    <ul class="research-list">
+                        <li>Wrote a technical deep dive article on Phala Network's confidential compute and Phat Contracts architecture and a developer oriented explainer on TEEs, secure off-chain execution, and private Web3 design patterns.</li>
+                        <li>This content also simplified confidential smart contract workflows for Phala developers.</li>
+                    </ul>
+                </div>
+                <div class="research-item">
+                    <div class="research-header">
+                        <div class="research-title">Walrus Protocol</div>
+                        <a href="https://x.com/yugAgarwal29/status/1946524303320899879" class="research-link" target="_blank" rel="noopener noreferrer">Link</a>
+                    </div>
+                    <ul class="research-list">
+                        <li>Authored a technical research thread on Walrus Protocol, explaining its RedStuff 2D erasure coding, decentralized availability model, asynchronous storage proofs, and Sui-native blob programmability.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Positions of Responsibility Section -->
+        <section id="positions">
+            <h2>Positions of Responsibility</h2>
+            <p class="section-subtitle">Leadership Roles</p>
+            <div class="section-grid">
+                <div class="position-item">
+                    <div class="position-header">
+                        <div class="position-title">Tech Fest Head, Plinth 2025</div>
+                        <div class="position-date">2024 - 2025</div>
+                    </div>
+                    <ul class="position-list">
+                        <li>Led a team of 150+ members across 10+ domains including Development, UI/UX, Sponsorship, Events, Social Media, Logistics, etc.</li>
+                        <li>Secured and managed a budget of INR 30L+ and executed the LNMIIT's annual techno-management fest, featuring tech talks, workshops, seminars, and LNM Hacks, the flagship Web3 hackathon of LNMIIT.</li>
+                    </ul>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Yug Agarwal. All rights reserved. Built with passion for Web3.</p>
+        <p>2025 Yug Agarwal. All rights reserved.</p>
     </footer>
 
     <script>
         const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
         const html = document.documentElement;
 
         // Check if system prefers dark mode
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         if (prefersDark) {
             html.classList.add('dark-mode');
-            themeToggle.textContent = '☀️';
+            themeIcon.innerHTML = '&#9788;';
         }
 
         // Toggle theme
         themeToggle.addEventListener('click', () => {
             html.classList.toggle('dark-mode');
             const isDark = html.classList.contains('dark-mode');
-            themeToggle.textContent = isDark ? '☀️' : '🌙';
+            themeIcon.innerHTML = isDark ? '&#9788;' : '&#9790;';
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
     </script>
 </body>
