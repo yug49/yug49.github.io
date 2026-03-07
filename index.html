@@ -501,6 +501,24 @@
             margin-bottom: 0.4rem;
         }
 
+        .exp-list a {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1.5px;
+            transition: all var(--transition);
+            border-radius: 4px;
+            padding: 0 0.15rem;
+        }
+
+        .exp-list a:hover,
+        .exp-list a:focus-visible {
+            background: rgba(0, 102, 255, 0.12);
+            color: var(--accent-hover);
+            outline: none;
+        }
+
         /* Achievements */
         .achievement-item {
             padding: 1.25rem 1.5rem;
@@ -924,7 +942,7 @@
         <div class="nav-container">
             <a href="#" class="nav-brand">Yug Agarwal</a>
             <div class="nav-links">
-                <a href="https://drive.google.com/file/d/1BWixi9WGHpFimKvng2eUZR1-bcxf5hSo/view?usp=sharing" target="_blank" class="nav-link resume-btn">Resume</a>
+                <a href="https://drive.google.com/file/d/1dz4scg97cstnmUZvv7tmQcs7ryUk9aCa/view?usp=sharing" target="_blank" class="nav-link resume-btn">Resume</a>
                 <a href="#education" class="nav-link">Education</a>
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#experience" class="nav-link">Experience</a>
@@ -1039,15 +1057,14 @@
                 <div class="experience-item">
                     <div class="exp-header">
                         <div>
-                            <div class="exp-title">Fortune Minds Inc. : Full Stack Developer Intern</div>
+                            <div class="exp-title"><a href="https://fortuneminds.com/" target="_blank" rel="noopener noreferrer">Fortune Minds Inc.</a> Full Stack Developer Intern</div>
                             <div class="exp-type">Part-time</div>
                         </div>
                         <div class="exp-date">Jan 2026 - Present</div>
                     </div>
                     <ul class="exp-list">
-                        <li>Working with full-stack development tech stacks including React, TypeScript, NestJS, and PostgreSQL.</li>
-                        <li>Helping maintain and improve WordPress and Framer websites for the organization.</li>
-                        <li>Leading the development of a new CRM platform, architecting and building it from scratch.</li>
+                        <li>Working with full-stack development tech stacks including React, TypeScript, NestJS and PostgreSQL. Helping maintain and improve WordPress and Framer websites for the organization.</li>
+                        <li>Led the development of a CRM platform, <a href="https://sparksnexa.ai" target="_blank" rel="noopener noreferrer">SparksNexa</a>, from scratch. Also built and maintained other apps, such as <a href="https://reforum.net" target="_blank" rel="noopener noreferrer">Real Estate Forum</a>, <a href="https://superconstruct.io" target="_blank" rel="noopener noreferrer">SuperConstruct</a>, <a href="https://txsparks.com" target="_blank" rel="noopener noreferrer">TX Sparks Construction</a>, <a href="https://txsparksluxuryhomes.com/" target="_blank" rel="noopener noreferrer">TX Sparks Luxury Homes</a>, <a href="https://showreel.replit.app/" target="_blank" rel="noopener noreferrer">ShowReel</a> etc.</li>
                     </ul>
                 </div>
                 <div class="experience-item">
@@ -1068,7 +1085,7 @@
                 <div class="experience-item">
                     <div class="exp-header">
                         <div>
-                            <div class="exp-title">Zircuit: Ambassador</div>
+                            <div class="exp-title"><a href="https://www.zircuit.com" target="_blank" rel="noopener noreferrer">Zircuit</a> Ambassador</div>
                             <div class="exp-type">Part-time</div>
                         </div>
                         <div class="exp-date">Feb 2026 - Mar 2026</div>
